@@ -57,6 +57,7 @@ function App() {
   const removeAll = () => {
     setGroceries([]);
     localStorage.clear();
+    toast.warn("List is empty");
   };
 
   return (
