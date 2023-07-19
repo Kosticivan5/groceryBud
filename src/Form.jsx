@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { toast } from "react-toastify";
 import SingleItem from "./SingleItem";
 
 const Form = ({ groceries, addItems, deleteItems, editItems, removeAll }) => {
   console.log(groceries);
   const [items, setItems] = useState("");
+  const isFocused = useRef(null);
+
+  useEffect(() => {
+    isFocused.current.focus();
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +27,7 @@ const Form = ({ groceries, addItems, deleteItems, editItems, removeAll }) => {
         <input
           type="text"
           value={items}
+          ref={isFocused}
           onChange={(e) => {
             setItems(e.target.value);
           }}
